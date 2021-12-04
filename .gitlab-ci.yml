@@ -1,0 +1,130 @@
+stages:
+  - init
+  - build
+
+cache: 
+  - &matrix_cache
+    policy: pull
+    key:
+      prefix: matrix-json
+      files: [ build.yaml ]
+    paths:
+      - matrix.json
+  - &toolchain_cache
+    policy: pull
+    key: ${CI_RUNNER_EXECUTABLE_ARCH}-zephyr-toolchain
+    paths:
+      - .west/
+      - modules/
+      - tools/
+      - zephyr/
+      - zmk/
+
+cache_check:
+  stage: .pre
+  cache:
+    - *toolchain_cache
+    - *matrix_cache
+  script:
+    - |
+      if [[ -f matrix.json ]]; then
+        MATRIX=true
+      else
+        MATRIX=false
+      fi
+    - |
+      if [[ -d zephyr ]]; then
+        TOOLCHAIN=true
+      else
+        TOOLCHAIN=false
+      fi
+    - echo "MATRIX_CACHE_HIT=$MATRIX" > rebuild.env
+    - echo "TOOLCHAIN_CACHE_HIT=$TOOLCHAIN" >> rebuild.env
+    - cat rebuild.env # debug
+  artifacts:
+    expire_in: 5 mins
+    reports:
+      dotenv: rebuild.env
+       
+parse_build_matrix:
+  stage: init
+  image: ubuntu:latest
+  cache:
+    <<: *matrix_cache
+    policy: push
+  before_script:
+    - if $MATRIX_CACHE_HIT; then exit 10; fi
+  script:
+    - apt update
+    - export DEBIAN_FRONTEND=noninteractive
+    - apt install -y software-properties-common python3 python3-pip jq
+    - python3 -m pip install remarshal
+    - yaml2json build.yaml | jq -c . > matrix.json # not sure what jq is actually doing here...
+    - cat matrix.json # debug output
+  dependencies:
+    - cache_check
+  allow_failure:
+    exit_codes:
+      - 10
+
+prepare_toolchain:
+  stage: init
+  image: zmkfirmware/zmk-build-arm:2.5
+  cache:
+    <<: *toolchain_cache
+    policy: push
+  before_script:
+    - if $TOOLCHAIN_CACHE_HIT; then exit 10; fi
+  script:
+    - west init -l config
+    - west update
+  dependencies:
+    - cache_check
+  allow_failure:
+    exit_codes:
+      - 10
+
+compile_firmware:
+  stage: build
+  image: zmkfirmware/zmk-build-arm:2.5
+  variables:
+    ARTIFACT_PATH: build/artifacts
+  cache:
+    - *matrix_cache
+    - *toolchain_cache
+  parallel:
+    matrix:
+      - BOARD: nice_nano_v2
+        SHIELD: [lily58_left, lily58_right]
+  before_script:
+    - |
+      if [[ -n ${SHIELD} ]]; then
+        EXTRA_CMAKE_ARGS="-DSHIELD=${SHIELD}"
+        ARTIFACT_NAME=${SHIELD}-${BOARD}-zmk
+        DISPLAY_NAME="${SHIELD} - ${BOARD}"
+      else
+        EXTRA_CMAKE_ARGS=
+        ARTIFACT_NAME=${BOARD}-zmk
+        DISPLAY_NAME=${BOARD}
+      fi
+    - west zephyr-export
+  script:
+    - west build -s zmk/app -b ${BOARD} -- -DZMK_CONFIG=${CI_PROJECT_DIR}/config $EXTRA_CMAKE_ARGS #$MATRIX_CMAKE_ARGS
+    #- |
+    #  echo "$DISPLAY_NAME DTS file"
+    #  if [[ -f build/zephyr/${BOARD}.dts.pre.tmp ]]; then cat -n build/zephyr/${BOARD}.dts.pre.tmp; fi
+    #  if [[ -f build/zephyr/zephyr.dts" ]]; then cat -n build/zephyr/zephyr.dts; fi
+    #- |
+    #  echo "$DISPLAY_NAME Kconfig file"      
+    #  cat build/zephyr/.config | grep -v "^#" | grep -v "^$"
+    - mkdir $ARTIFACT_PATH
+    - |
+      if [[ -f build/zephyr/zmk.uf2 ]]; then 
+        cp build/zephyr/zmk.uf2 $ARTIFACT_PATH/$ARTIFACT_NAME.uf2
+      elif [[ -f build/zephyr/zmk.hex ]]; then
+        cp build/zephyr/zmk.hex $ARTIFACT_PATH/$ARTIFACT_NAME.hex
+      fi
+  artifacts:
+    name: $ARTIFACT_NAME
+    paths:
+      - $ARTIFACT_PATH
