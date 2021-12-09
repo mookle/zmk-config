@@ -8,6 +8,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
+/* Relative to build dir. Not sure if there's a better way */
+#include <../../../../config/macro_bindings.dtsi>
 
 /* Keypress aliases */
 #define KP_MUL (KP_MULTIPLY)
@@ -19,31 +21,6 @@
 #define RAISE  2
 #define SUPER  3
 #define QWERTY 4
-
-/* Tmux macros */
-#define T_PNE  (none)
-#define T_CLS  (none)
-#define T_PRV  (none)
-#define T_NXT  (none)
-#define T_ZOM  (none)
-#define T_HSPT (none)
-#define T_VSPT (none)
-#define T_LFT  (none)
-#define T_DWN  (none)
-#define T_UP   (none)
-#define T_RGT  (none)
-
-/* Neovim macros */
-#define N_SVE  (none)
-#define N_CLS  (none)
-#define N_HSPT (none)
-#define N_VSPT (none)
-#define N_LFT  (none)
-#define N_DWN  (none)
-#define N_UP   (none)
-#define N_RGT  (none)
-#define N_HOPN (none)
-#define N_VOPN (none)
 
 / {
 	keymap {
@@ -76,10 +53,10 @@
    &kp GRAVE   &none     &none     &none     &none     &none                         &kp F7    &kp F8    &kp F9   &kp F10   &kp F11   &kp F12
 
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-     &none     &none     &none     &none     &none     &none                         &none     &none  &kp N_VOPN   &none     &none     &none
+     &none     &none     &none     &none     &none     &none                         &none     &none   &n_vopen    &none     &none     &none
 
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-     &none     &none     &none     &none     &none     &none                      &kp N_HOPN &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT   &none
+     &none     &none     &none     &none     &none     &none                       &n_hopen  &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT   &none
 
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
     &trans     &none     &none     &none     &none     &none    &none     &none    &kp CARET &kp AMPS &kp KP_MUL &kp PIPE  &kp BSLH    &trans
@@ -97,16 +74,16 @@
     &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6                         &none     &none     &none     &none     &none     &none 
 
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-     &none  &kp N_CLS &kp N_SVE    &none     &none     &none                         &none     &none  &kp N_VSPT   &none     &none     &none
+     &none   &n_close   &n_save    &none     &none     &none                         &none     &none   &n_vsplit   &none     &none     &none
 
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-   &kp LBRC  &kp LBKT  &kp LPAR  &kp RPAR  &kp RBKT  &kp RBRC                      &kp N_HSPT &kp N_LFT &kp N_DWN &kp N_UP &kp N_RGHT  &none
+   &kp LBRC  &kp LBKT  &kp LPAR  &kp RPAR  &kp RBKT  &kp RBRC                      &n_hsplit  &n_left   &n_down    &n_up    &n_right   &none
 
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
     &trans   &kp EXCL   &kp AT   &kp HASH &kp DOLLAR &kp PRCNT   &none     &none     &none     &none     &none     &none     &none    &trans
 
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
-                                  &trans    &trans   &kp SUPER &kp KP_MIN &trans    &trans UNDER &mo SUPER  &trans    &trans
+                                  &trans    &trans   &mo SUPER &kp KP_MIN &trans    &trans    &trans    &trans
 
 //                              +---------|---------|---------|---------+---------|---------|---------|---------+
 			>;
@@ -115,13 +92,13 @@
 		super_layer {
 			bindings = <
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
-     &none  &tgl QWERTY  &none     &none     &none     &none                         &none     &none     &none     &none     &none     &none
+     &none  &tog QWERTY  &none     &none     &none     &none                         &none     &none     &none     &none     &none     &none
 
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-     &none   &kp T_CLS   &none     &none     &none     &none                         &none     &none  &kp T_VSPT   &none     &none     &none
+     &none   &t_close    &none     &none     &none     &none                         &none     &none   &t_vsplit   &none     &none     &none
 
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-   &kp LBRC  &kp T_PRV   &none   &kp T_ZOM &kp T_NXT &kp T_PNE                    &kp T_HSPT &kp T_LFT &kp T_DWN &kp T_UP &kp T_RGHT   &none
+   &kp LBRC   &t_prev    &none    &t_zoom   &t_next   &t_prev                      &t_hsplit  &t_left   &t_down    &t_up   &t_right    &none
 
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
      &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none     &none
@@ -155,3 +132,4 @@
                 };
 	};
 };
+

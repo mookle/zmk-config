@@ -1,0 +1,130 @@
+/ {
+    behaviors {
+        t_new: t_new {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO1";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp C>;
+        };
+        t_close: t_close {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO2";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp X>;
+        };
+        t_prev: t_prev {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO3";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp P>;
+        };
+        t_next: t_next {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO4";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp N>;
+        };
+        t_zoom: t_zoom {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO5";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp Z>;
+        };
+        t_hsplit: t_hsplit {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO6";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp DOUBLE_QUOTES>;
+        };
+        t_vsplit: t_vsplit {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO7";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp PERCENT>;
+        };
+        t_left: t_left {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO8";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp LEFT>;
+        };
+        t_down: t_down {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO9";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp DOWN>;
+        };
+        t_up: t_up {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO10";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp UP>;
+        };
+        t_right: t_right {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO11";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B)>, <&kp RIGHT>;
+        };
+        n_save: n_save {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO12";
+            #binding-cells = <0>;
+            bindings = <&kp COLON>, <&kp W>;
+        };
+        n_close: n_close {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO13";
+            #binding-cells = <0>;
+            bindings = <&kp COLON>, <&kp Q>;
+        };
+        n_hsplit: n_hsplit {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO14";
+            #binding-cells = <0>;
+            bindings = <&kp COLON>, <&kp S>, <&kp P>;
+        };
+        n_vsplit: n_vsplit {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO15";
+            #binding-cells = <0>;
+            bindings = <&kp COLON>, <&kp V>, <&kp S>, <&kp P>;
+        };
+        n_left: n_left {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO16";
+            #binding-cells = <0>;
+            bindings = <&kp LC(W)>, <&kp LEFT>;
+        };
+        n_down: n_down {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO17";
+            #binding-cells = <0>;
+            bindings = <&kp LC(W)>, <&kp DOWN>;
+        };
+        n_up: n_up {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO18";
+            #binding-cells = <0>;
+            bindings = <&kp LC(W)>, <&kp UP>;
+        };
+        n_right: n_right {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO19";
+            #binding-cells = <0>;
+            bindings = <&kp LC(W)>, <&kp RIGHT>;
+        };
+        n_hopen: n_hopen {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO20";
+            #binding-cells = <0>;
+            bindings = <&kp LC(X)>;
+        };
+        n_vopen: n_vopen {
+            compatible = "zmk,behavior-macro";
+            label = "MACRO21";
+            #binding-cells = <0>;
+            bindings = <&kp LC(V)>;
+        };
+    };
+};
