@@ -27,81 +27,53 @@
 
 / {
     behaviors {
-        lthome: left_home {
-            compatible = "zmk,behavior-mod-morph";
-            label = "LEFT_HOME";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT>, <&kp HOME>;
-            mods = <MOD_LSFT>;
-        };
-        rtend: right_end {
-            compatible = "zmk,behavior-mod-morph";
-            label = "RIGHT_ENDH";
-            #binding-cells = <0>;
-            bindings = <&kp RIGHT>, <&kp END>;
-            mods = <MOD_LSFT>;
-        };
-        dnpge: down_pgdown {
-            compatible = "zmk,behavior-mod-morph";
-            label = "DOWN_PGDOWN";
-            #binding-cells = <0>;
-            bindings = <&kp DOWN>, <&kp PG_DN>;
-            mods = <MOD_LSFT>;
-        };
-        uppge: up_pgup {
-            compatible = "zmk,behavior-mod-morph";
-            label = "UP_PGUP";
-            #binding-cells = <0>;
-            bindings = <&kp UP>, <&kp PG_UP>;
-            mods = <MOD_LSFT>;
-        };
         n_save: nvim_save {
             compatible = "zmk,behavior-macro";
             label = "NVIM_SAVE";
             #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp W>, <&kp RET>;
+            bindings = <&kp COLON &kp W &kp RET>;
         };
         n_close: nvim_close {
             compatible = "zmk,behavior-macro";
             label = "NVIM_CLOSE";
             #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp W>, <&kp Q>, <&kp RET>;
+            bindings = <&kp COLON &kp W &kp Q &kp RET>;
         };
         n_hsplit: nvim_hsplit {
             compatible = "zmk,behavior-macro";
             label = "NVIM_HSPLIT";
             #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp S>, <&kp P>;
+            bindings = <&kp COLON &kp S &kp P>;
         };
         n_vsplit: nvim_vsplit {
             compatible = "zmk,behavior-macro";
             label = "NVIM_VSPLIT";
             #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp V>, <&kp S>, <&kp P>;
+            bindings = <&kp COLON &kp V &kp S &kp P>;
         };
         n_left: nvim_left {
             compatible = "zmk,behavior-macro";
             label = "NVIM_LEFT";
             #binding-cells = <0>;
-            bindings = <&kp LC(W)>, <&kp LEFT>;
+            bindings = <&kp LC(W) &kp LEFT>;
         };
         n_down: nvim_down {
             compatible = "zmk,behavior-macro";
             label = "NVIM_DOWN";
             #binding-cells = <0>;
-            bindings = <&kp LC(W)>, <&kp DOWN>;
+            bindings = <&kp LC(W) &kp DOWN>;
         };
         n_up: nvim_up {
             compatible = "zmk,behavior-macro";
             label = "NVIM_UP";
             #binding-cells = <0>;
-            bindings = <&kp LC(W)>, <&kp UP>;
+            bindings = <&kp LC(W) &kp UP>;
         };
         n_right: nvim_right {
             compatible = "zmk,behavior-macro";
             label = "NVIM_RIGHT";
             #binding-cells = <0>;
-            bindings = <&kp LC(W)>, <&kp RIGHT>;
+            bindings = <&kp LC(W) &kp RIGHT>;
         };
         n_hopen: nvim_hopen {
             compatible = "zmk,behavior-macro";
@@ -147,13 +119,13 @@
         lower_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6       &trans    &trans    &trans    &trans    &trans    &trans
+    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6       &trans    &kp HOME &kp PG_DN &kp PG_UP  &kp END   &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans   &mo NUMS   &trans    &trans   &sl NVIM   &trans       &trans    &lthome   &dnpge    &uppge    &rtend    &trans
+    &trans   &mo NUMS   &trans    &trans   &sl NVIM   &trans       &trans   &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT  &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &trans    &trans    &trans    &trans    &trans    &trans      &kp CARET &kp AMPS  &kp STAR  &kp TILDE  &kp BSLH &kp EQUAL
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                  &trans    &trans    &trans       &trans   &kp MINUS  &trans
+                                  &trans    &trans    &trans       &trans   &kp UNDER  &trans
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
@@ -162,11 +134,11 @@
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
   &bt BT_CLR   BT_L0     BT_L1     BT_L2     BT_L3     BT_L4       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp LBKT  &kp LBRC  &kp LPAR  &kp RPAR  &kp RBRC  &kp RBKT      &trans    &trans    &trans    &trans    &trans    &trans
+   &kp LBRC  &kp LPAR  &kp LBKT  &kp RBKT  &kp RPAR  &kp RBRC      &trans    &trans    &trans    &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
    &kp GRAVE &kp EXCL   &kp AT   &kp NUHS  &kp DLLR  &kp PRCNT     &trans    &trans    &trans    &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                  &trans   &kp UNDER  &trans       &trans    &trans    &trans
+                                  &trans   &kp MINUS  &trans       &trans    &trans    &trans
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
