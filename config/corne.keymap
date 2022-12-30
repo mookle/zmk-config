@@ -32,6 +32,24 @@
 
 / {
     behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        bhm: balanced_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;    // <---[[moderate duration]]
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
         X_cut: x_cut_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "X_CUT_DANCE";
@@ -121,7 +139,7 @@
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &gresc     &kp Q     &kp W     &kp F     &kp P     &kp B        &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &kp SQT
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp BSPC    &kp A     &kp R     &kp S     &kp T     &kp G        &kp M     &kp N     &kp E     &kp I     &kp O    &kp RET
+   &kp BSPC &hm LSHFT A &hm LALT R &hm LCTRL S &hm LGUI T &kp G     &kp M     &bhm RGUI N     &bhm RCTRL E     &bhm RALT I     &bhm RSHFT O    &kp RET
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
    &kp LSHFT   &kp Z     &X_cut   &C_copy    &kp D   &V_paste       &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
