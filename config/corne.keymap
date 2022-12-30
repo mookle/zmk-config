@@ -25,27 +25,32 @@
 #define BT_L3 &bt BT_SEL 3
 #define BT_L4 &bt BT_SEL 4
 
+/*
+ * Tap dance
+ */
+#define DANCE_TERM <145>
+
 / {
     behaviors {
         X_cut: x_cut_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "X_CUT_DANCE";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = DANCE_TERM;
             bindings = <&kp X>, <&kp LG(X)>;
         };
         C_copy: c_copy_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "C_COPY_DANCE";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = DANCE_TERM;
             bindings = <&kp C>, <&kp LG(C)>;
         };
         V_paste: v_paste_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "V_PASTE_DANCE";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = DANCE_TERM;
             bindings = <&kp V>, <&kp LG(V)>;
         };
         n_save: nvim_save {
