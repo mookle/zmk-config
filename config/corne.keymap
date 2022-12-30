@@ -30,20 +30,24 @@
  */
 #define DANCE_TERM <145>
 
+/*
+ * Homerow mods
+ * GASC_CSAG layout
+ */
+#define HM_A &hm LGUI A
+#define HM_R &hm LALT R
+#define HM_S &hm LSHFT S
+#define HM_T &hm LCTRL T
+#define HM_N &hm RCTRL N
+#define HM_E &hm RSHFT E
+#define HM_I &hm RALT I
+#define HM_O &hm RGUI O
+
 / {
     behaviors {
-        hm: homerow_mods {
+        hm: homerow_mod {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-        bhm: balanced_homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
+            label = "HOMEROW_MOD";
             #binding-cells = <2>;
             tapping-term-ms = <200>;    // <---[[moderate duration]]
             quick-tap-ms = <0>;
@@ -139,11 +143,11 @@
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &gresc     &kp Q     &kp W     &kp F     &kp P     &kp B        &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &kp SQT
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp BSPC &hm LSHFT A &hm LALT R &hm LCTRL S &hm LGUI T &kp G     &kp M     &bhm RGUI N     &bhm RCTRL E     &bhm RALT I     &bhm RSHFT O    &kp RET
+   &kp BSPC    HM_A      HM_R      HM_S      HM_T      &kp G        &kp M     HM_N      HM_E      HM_I      HM_O     &kp RET
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp LSHFT   &kp Z     &X_cut   &C_copy    &kp D   &V_paste       &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+   &kp BSLH    &kp Z    &X_cut    &C_copy    &kp D   &V_paste       &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH   &kp TAB
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                 &kp LCTRL   LOSPC   &kp LGUI     &kp RALT    RSTAB     &none
+                                 &mo NUMS    LOSPC   &kp UNDER    &kp MINUS   RSTAB   &kp EQUAL
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
@@ -165,11 +169,11 @@
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6       &trans   &kp HOME  &kp PG_DN &kp PG_UP  &kp END  &kp RA(N3)
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans   &mo NUMS   &trans    &trans   &sl NVIM   &trans       &trans   &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT  &trans
+    &trans    &trans    &trans    &trans   &sl NVIM   &trans       &trans   &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT  &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans      &kp CARET &kp AMPS  &kp STAR  &kp TILDE  &kp BSLH &kp EQUAL
+    &trans    &trans    &trans    &trans    &trans    &trans      &kp CARET &kp AMPS  &kp STAR  &kp TILDE  &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                  &trans    &trans    &trans       &trans   &kp UNDER  &trans
+                                  &trans    &trans    &trans       &trans    &trans    &trans
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
@@ -182,7 +186,7 @@
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
    &kp GRAVE &kp EXCL   &kp AT   &kp NUHS  &kp DLLR  &kp PRCNT     &trans    &trans    &trans    &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                  &trans   &kp MINUS  &trans       &trans    &trans    &trans
+                                  &trans    &trans    &trans       &trans    &trans    &trans
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
