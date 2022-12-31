@@ -197,9 +197,9 @@
         raise_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-  &bt BT_CLR   BT_L0     BT_L1     BT_L2     BT_L3     BT_L4       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
+    &trans    &trans    &trans    &trans    &trans    &trans       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp LBRC  &kp LPAR  &kp LBKT  &kp RBKT  &kp RPAR  &kp RBRC      &trans    &trans    &trans    &trans    &trans    &trans
+   &kp LBRC  &kp LPAR  &kp LBKT  &kp RBKT  &kp RPAR  &kp RBRC    &bt BT_CLR   BT_L0     BT_L1     BT_L2     BT_L3     BT_L4
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
    &kp GRAVE &kp EXCL   &kp AT   &kp NUHS  &kp DLLR  &kp PRCNT     &trans    &trans    &trans    &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
