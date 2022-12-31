@@ -8,7 +8,9 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-/* Layers */
+/*
+ * Layers
+ */
 #define DEFAULT 0
 #define QWERTY  1
 #define LOWER   2
@@ -16,9 +18,15 @@
 #define NUMS    4
 #define NVIM    5 
 
-/* Aliases */
-#define LOSPC &lt LOWER SPACE
-#define RSTAB &lt RAISE TAB
+/*
+ * Space layer mods
+ */
+#define SL_LWR &spl LOWER SPACE
+#define SL_RSE &spl RAISE SPACE
+
+/*
+ * Bluetooth
+ */
 #define BT_L0 &bt BT_SEL 0
 #define BT_L1 &bt BT_SEL 1
 #define BT_L2 &bt BT_SEL 2
@@ -53,6 +61,15 @@
             quick-tap-ms = <0>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
+        };
+        spl: space_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SPACE_LAYER";
+            #binding-cells = <2>;
+            tapping-term-ms = <600>;
+            quick-tap-ms = <20>;
+            flavor = "tap-unless-interrupted";
+            bindings = <&mo>, <&kp>;
         };
         X_cut: x_cut_dance {
             compatible = "zmk,behavior-tap-dance";
@@ -147,7 +164,7 @@
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
    &kp BSLH    &kp Z    &X_cut    &C_copy    &kp D   &V_paste       &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH   &kp TAB
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                 &mo NUMS    LOSPC   &kp UNDER    &kp MINUS   RSTAB   &kp EQUAL
+                                 &mo NUMS   SL_LWR   &kp UNDER    &kp MINUS  SL_RSE   &kp EQUAL
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
