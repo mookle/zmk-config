@@ -40,16 +40,16 @@
 
 /*
  * Homerow mods
- * GASC_CSAG layout
+ * SAGC_CGAS layout
  */
-#define HM_A &hmt LGUI A
+#define HM_A &hmt LSHFT A
 #define HM_R &hmb LALT R
-#define HM_S &hmb LSHFT S
+#define HM_S &hmb LGUI S
 #define HM_T &hmb LCTRL T
 #define HM_N &hmb RCTRL N
-#define HM_E &hmb RSHFT E
+#define HM_E &hmb RGUI E
 #define HM_I &hmb RALT I
-#define HM_O &hmt RGUI O
+#define HM_O &hmt RSHFT O
 
 / {
     behaviors {
