@@ -67,7 +67,7 @@
             label = "SPACE_LAYER";
             #binding-cells = <2>;
             tapping-term-ms = <600>;
-            quick-tap-ms = <20>;
+            quick-tap-ms = <0>;
             flavor = "tap-unless-interrupted";
             bindings = <&mo>, <&kp>;
         };
