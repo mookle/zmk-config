@@ -42,20 +42,29 @@
  * Homerow mods
  * GASC_CSAG layout
  */
-#define HM_A &hm LGUI A
-#define HM_R &hm LALT R
-#define HM_S &hm LSHFT S
-#define HM_T &hm LCTRL T
-#define HM_N &hm RCTRL N
-#define HM_E &hm RSHFT E
-#define HM_I &hm RALT I
-#define HM_O &hm RGUI O
+#define HM_A &hmt LGUI A
+#define HM_R &hmb LALT R
+#define HM_S &hmb LSHFT S
+#define HM_T &hmb LCTRL T
+#define HM_N &hmb RCTRL N
+#define HM_E &hmb RSHFT E
+#define HM_I &hmb RALT I
+#define HM_O &hmt RGUI O
 
 / {
     behaviors {
-        hm: homerow_mod {
+        hmt: homerow_mod_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MOD";
+            label = "HOMEROW_MOD_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+         hmb: homerow_mod_balanced {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MOD_BALANCED";
             #binding-cells = <2>;
             tapping-term-ms = <200>;    // <---[[moderate duration]]
             quick-tap-ms = <0>;
