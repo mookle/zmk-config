@@ -42,34 +42,58 @@
  * Homerow mods
  * SAGC_CGAS layout
  */
-#define HM_A &hmt LSHFT A
-#define HM_R &hmb LALT R
-#define HM_S &hmb LGUI S
-#define HM_T &hmb LCTRL T
-#define HM_N &hmb RCTRL N
-#define HM_E &hmb RGUI E
-#define HM_I &hmb RALT I
-#define HM_O &hmt RSHFT O
+#define HM_A &lmt LSHFT A
+#define HM_R &lmb LALT R
+#define HM_S &lmb LGUI S
+#define HM_T &lmb LCTRL T
+#define HM_N &rmb RCTRL N
+#define HM_E &rmb RGUI E
+#define HM_I &rmb RALT I
+#define HM_O &rmt RSHFT O
+#define LHS <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29>
+#define RHS <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35>
 
 / {
     behaviors {
-        hmt: homerow_mod_tap {
+        lmt: left_homerow_mod_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MOD_TAP";
+            label = "LEFT_HOMEROW_MOD_TAP";
             #binding-cells = <2>;
             tapping-term-ms = <150>;
-            quick-tap-ms = <0>;
+            quick-tap-ms = <50>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = RHS;
         };
-         hmb: homerow_mod_balanced {
+        rmt: right_homerow_mod_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MOD_BALANCED";
+            label = "RIGHT_HOMEROW_MOD_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <50>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = LHS;
+        };
+        lmb: left_homerow_mod_balanced {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LEFT_HOMEROW_MOD_BALANCED";
             #binding-cells = <2>;
             tapping-term-ms = <200>;    // <---[[moderate duration]]
-            quick-tap-ms = <0>;
+            quick-tap-ms = <50>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = RHS;
+        };
+        rmb: right_homerow_mod_balanced {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RIGHT_HOMEROW_MOD_BALANCED";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;    // <---[[moderate duration]]
+            quick-tap-ms = <50>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = LHS;
         };
         spl: space_layer {
             compatible = "zmk,behavior-hold-tap";
