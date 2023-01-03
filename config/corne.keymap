@@ -79,8 +79,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LEFT_HOMEROW_MOD_BALANCED";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;    // <---[[moderate duration]]
-            quick-tap-ms = <50>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <25>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = RHS;
@@ -89,8 +89,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "RIGHT_HOMEROW_MOD_BALANCED";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;    // <---[[moderate duration]]
-            quick-tap-ms = <50>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <25>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = LHS;
