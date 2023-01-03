@@ -99,8 +99,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "SPACE_LAYER";
             #binding-cells = <2>;
-            tapping-term-ms = <600>;
-            quick-tap-ms = <0>;
+            tapping-term-ms = <250>;
+            quick-tap-ms = <25>;
             flavor = "tap-unless-interrupted";
             bindings = <&mo>, <&kp>;
         };
