@@ -36,7 +36,7 @@
 /*
  * Tap dance
  */
-#define DANCE_TERM <145>
+#define DANCE_TERM <180>
 
 /*
  * Homerow mods
