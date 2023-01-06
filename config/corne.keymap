@@ -19,10 +19,12 @@
 #define NVIM    5
 
 /*
- * Space layer mods
+ * Hold/mod-tap
  */
-#define SL_LWR &spl LOWER SPACE
-#define SL_RSE &spl RAISE SPACE
+#define HT_LS &mht LOWER SPACE
+#define HT_RB &mht RAISE BSPC
+#define HT_SS &htt RSHFT SEMI
+#define HT_SC &hth LSHFT CAPS
 
 /*
  * Bluetooth
@@ -38,70 +40,42 @@
  */
 #define DANCE_TERM <180>
 
-/*
- * Home(bottom)-row mods
- */
-#define HM_LA &lmb LALT Z
-#define HM_LC &lmb LCTRL X
-#define HM_LS &lmb LSHFT C
-#define HM_LG &lmb LGUI D
-#define HM_RG &rmb RGUI H
-#define HM_RS &rmb RSHFT COMMA
-#define HM_RC &rmb RCTRL DOT
-#define HM_RA &rmb RALT FSLH
-#define LHS <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29>
-#define RHS <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35>
-
 / {
     behaviors {
-        lmt: left_homerow_mod_tap {
+        mht: momentary_hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "LEFT_HOMEROW_MOD_TAP";
-            #binding-cells = <2>;
-            tapping-term-ms = <180>;
-            quick-tap-ms = <50>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = RHS;
-        };
-        rmt: right_homerow_mod_tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "RIGHT_HOMEROW_MOD_TAP";
-            #binding-cells = <2>;
-            tapping-term-ms = <180>;
-            quick-tap-ms = <50>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = LHS;
-        };
-        lmb: left_homerow_mod_balanced {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LEFT_HOMEROW_MOD_BALANCED";
-            #binding-cells = <2>;
-            tapping-term-ms = <180>;
-            quick-tap-ms = <25>;
-            flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = RHS;
-        };
-        rmb: right_homerow_mod_balanced {
-            compatible = "zmk,behavior-hold-tap";
-            label = "RIGHT_HOMEROW_MOD_BALANCED";
-            #binding-cells = <2>;
-            tapping-term-ms = <180>;
-            quick-tap-ms = <25>;
-            flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = LHS;
-        };
-        spl: space_layer {
-            compatible = "zmk,behavior-hold-tap";
-            label = "SPACE_LAYER";
+            label = "MOMENTARY_HOLD_TAP";
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             quick-tap-ms = <30>;
             flavor = "balanced";
             bindings = <&mo>, <&kp>;
+        };
+        htt: hold_tap_tap  {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <120>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        htb: hold_tap_balanced  {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_BALANCED";
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            quick-tap-ms = <30>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+        hth: hold_tap_hold  {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_HOLD";
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <100>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
         };
         X_cut: x_cut_dance {
             compatible = "zmk,behavior-tap-dance";
@@ -110,14 +84,14 @@
             tapping-term-ms = DANCE_TERM;
             bindings = <&kp X>, <&kp LG(X)>;
         };
-        C_copy: c_copy_dance {
+        c_copy: c_copy_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "C_COPY_DANCE";
             #binding-cells = <0>;
             tapping-term-ms = DANCE_TERM;
             bindings = <&kp C>, <&kp LG(C)>;
         };
-        V_paste: v_paste_dance {
+        v_paste: v_paste_dance {
             compatible = "zmk,behavior-tap-dance";
             label = "V_PASTE_DANCE";
             #binding-cells = <0>;
@@ -190,13 +164,13 @@
         default_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &gresc     &kp Q     &kp W     &kp F     &kp P     &kp B        &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &kp SQT
+   &mo NUMS    &kp Q     &kp W     &kp F     &kp P     &kp B        &kp J     &kp L     &kp U     &kp Y  &kp RA(N3) &kp EQUAL
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp BSPC    &kp A     &kp R     &kp S     &kp T     &kp G        &kp M     &kp N     &kp E     &kp I     &kp O    &kp RET
+     HT_SC     &kp A     &kp R     &kp S     &kp T     &kp G        &kp M     &kp N     &kp E     &kp I     &kp O     HT_SS
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp BSLH    HM_LA     HM_LC     HM_LS     HM_LG   &V_paste       &kp K     HM_RG     HM_RS     HM_RC     HM_RA   &kp RA(N3)
+    &trans     &kp Z     &kp X     &kp C     &kp D     &kp V        &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &kp RALT
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                 &mo NUMS   SL_LWR    &kp TAB     &kp MINUS  SL_RSE   &kp EQUAL
+                                 &kp LCTRL   HT_LS    &kp ESC      &kp RET    HT_RB   &kp RGUI
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
@@ -216,26 +190,26 @@
         lower_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6       &trans   &kp HOME  &kp PG_DN &kp PG_UP  &kp END   &trans
+    &trans   &n_close   &n_save   &trans    &trans    &trans      &kp CARET &kp AMPS  &kp STAR   &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans   &sl NVIM   &trans       &trans   &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT  &trans
+    &trans   &mo NVIM   &trans    &trans    &trans    &trans      &kp MINUS &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT  &kp DQT
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans      &kp CARET &kp AMPS  &kp STAR  &kp TILDE  &trans    &trans
+    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6       &trans   &kp RBKT  &kp RPAR  &kp RBRC  &kp TILDE &kp PIPE
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                  &trans    &trans    &trans       &trans    &trans    &trans
+                                  &trans    &trans    &trans      &kp UNDER  &kp TAB   &trans
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
         raise_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
+   &kp GRAVE &kp EXCL   &kp AT   &kp POUND &kp DLLR  &kp PRCNT   &bt BT_CLR   BT_L0     BT_L1     BT_L2     BT_L3     BT_L4
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp LBRC  &kp LPAR  &kp LBKT  &kp RBKT  &kp RPAR  &kp RBRC    &bt BT_CLR   BT_L0     BT_L1     BT_L2     BT_L3     BT_L4
+    &kp SQT   &trans    &trans    &trans    &trans   &kp PLUS      &trans    &trans    &trans    &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp GRAVE &kp EXCL   &kp AT   &kp NUHS  &kp DLLR  &kp PRCNT     &trans    &trans    &trans    &trans    &trans    &trans
+   &kp BSLH   &trans   &kp LBRC  &kp LPAR  &kp LBKT   &trans       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                  &trans    &trans    &trans       &trans    &trans    &trans
+                                  &trans    &trans   &kp COLON     &trans    &trans    &trans
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
@@ -244,18 +218,18 @@
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &trans    &trans    &trans    &trans    &trans    &trans       &trans    &kp N1    &kp N2    &kp N3   &kp RPAR  &kp LPAR
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans  &tog QWERTY &trans      &kp MINUS  &kp N4    &kp N5    &kp N6    &kp N0   &kp BSLH
+    &trans    &trans    &trans    &trans  &tog QWERTY &trans      &kp MINUS  &kp N4    &kp N5    &kp N6    &kp N0   &kp FSLH
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &trans    &trans    &trans    &trans    &trans    &trans      &kp PLUS   &kp N7    &kp N8    &kp N9    &kp DOT  &kp STAR
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                  &trans   &kp UNDER  &trans      &kp BSPC   &kp RET  &kp EQUAL
+                                  &trans    &trans    &trans       &kp RET  &kp BSPC  &kp EQUAL
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
         nvim_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans   &n_close   &n_save   &trans    &trans    &trans       &trans    &trans   &n_vsplit &n_vopen   &trans    &trans
+    &trans    &trans    &trans    &trans    &trans    &trans       &trans    &trans   &n_vsplit &n_vopen   &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &trans    &trans    &trans    &trans    &trans    &trans      &n_hsplit  &n_left   &n_down    &n_up   &n_right    &none
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
