@@ -87,7 +87,7 @@
             compatible = "zmk,behavior-macro";
             label = "NVIM_CLOSE";
             #binding-cells = <0>;
-            bindings = <&kp COLON &kp W &kp Q &kp RET>;
+            bindings = <&kp COLON &kp Q &kp RET>;
         };
         n_hsplit: nvim_hsplit {
             compatible = "zmk,behavior-macro";
