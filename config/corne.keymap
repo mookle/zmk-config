@@ -93,13 +93,13 @@
             compatible = "zmk,behavior-macro";
             label = "NVIM_HSPLIT";
             #binding-cells = <0>;
-            bindings = <&kp COLON &kp S &kp P>;
+            bindings = <&kp COLON &kp S &kp P &kp RET>;
         };
         n_vsplit: nvim_vsplit {
             compatible = "zmk,behavior-macro";
             label = "NVIM_VSPLIT";
             #binding-cells = <0>;
-            bindings = <&kp COLON &kp V &kp S &kp P>;
+            bindings = <&kp COLON &kp V &kp S &kp P &kp RET>;
         };
         n_left: nvim_left {
             compatible = "zmk,behavior-macro";
