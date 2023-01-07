@@ -77,27 +77,6 @@
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
         };
-        X_cut: x_cut_dance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "X_CUT_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = DANCE_TERM;
-            bindings = <&kp X>, <&kp LG(X)>;
-        };
-        c_copy: c_copy_dance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "C_COPY_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = DANCE_TERM;
-            bindings = <&kp C>, <&kp LG(C)>;
-        };
-        v_paste: v_paste_dance {
-            compatible = "zmk,behavior-tap-dance";
-            label = "V_PASTE_DANCE";
-            #binding-cells = <0>;
-            tapping-term-ms = DANCE_TERM;
-            bindings = <&kp V>, <&kp LG(V)>;
-        };
         n_save: nvim_save {
             compatible = "zmk,behavior-macro";
             label = "NVIM_SAVE";
@@ -145,18 +124,6 @@
             label = "NVIM_RIGHT";
             #binding-cells = <0>;
             bindings = <&kp LC(W) &kp RIGHT>;
-        };
-        n_hopen: nvim_hopen {
-            compatible = "zmk,behavior-macro";
-            label = "NVIM_HOPEN";
-            #binding-cells = <0>;
-            bindings = <&kp LC(X)>;
-        };
-        n_vopen: nvim_vopen {
-            compatible = "zmk,behavior-macro";
-            label = "NVIM_VOPEN";
-            #binding-cells = <0>;
-            bindings = <&kp LC(V)>;
         };
     };
     keymap {
@@ -229,11 +196,11 @@
         nvim_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans       &trans    &trans   &n_vsplit &n_vopen   &trans    &trans
+    &trans    &trans    &trans    &trans    &trans    &trans       &trans    &trans   &n_vsplit  &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &trans    &trans    &trans    &trans    &trans    &trans      &n_hsplit  &n_left   &n_down    &n_up   &n_right    &none
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans      &n_hopen   &trans    &trans    &trans    &trans    &trans
+    &trans    &trans    &trans    &trans    &trans    &trans       &trans    &trans    &trans    &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
                                   &trans    &trans    &trans       &trans    &trans    &trans
 //                              |---------|---------|---------|  |---------|---------|---------|
