@@ -22,9 +22,9 @@
  * Hold/mod-tap
  */
 #define HT_LS &mht LOWER SPACE
-#define HT_RB &mht RAISE BSPC
-#define HT_SS &htt RSHFT SEMI
-#define HT_SC &hth LSHFT CAPS
+#define HT_RS &mht RAISE SPACE
+#define HT_NE &mht NUMS ESC
+#define HT_AB &htt RALT BSPC
 
 /*
  * Bluetooth
@@ -131,13 +131,13 @@
         default_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &mo NUMS    &kp Q     &kp W     &kp F     &kp P     &kp B        &kp J     &kp L     &kp U     &kp Y  &kp RA(N3) &kp EQUAL
+     HT_NE     &kp Q     &kp W     &kp F     &kp P     &kp B        &kp J     &kp L     &kp U     &kp Y  &kp RA(N3) &kp EQUAL
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-     HT_SC     &kp A     &kp R     &kp S     &kp T     &kp G        &kp M     &kp N     &kp E     &kp I     &kp O     HT_SS
+     HT_AB     &kp A     &kp R     &kp S     &kp T     &kp G        &kp M     &kp N     &kp E     &kp I     &kp O   &kp SEMI
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans     &kp Z     &kp X     &kp C     &kp D     &kp V        &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &kp RALT
+   &kp LSHFT   &kp Z     &kp X     &kp C     &kp D     &kp V        &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                 &kp LCTRL   HT_LS    &kp RET      &kp ESC    HT_RB   &kp RGUI
+                                 &kp LCTRL   HT_LS    &kp TAB      &kp RET    HT_RS   &kp RGUI
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
@@ -157,13 +157,13 @@
         lower_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans   &n_close   &n_save   &trans    &trans    &trans      &kp CARET &kp AMPS  &kp STAR   &trans    &trans    &trans
+    &trans   &n_close   &n_save  &kp LBKT  &kp RBKT   &trans      &kp CARET &kp AMPS  &kp STAR  &kp LBRC  &kp RBRC   &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans   &mo NVIM   &trans    &trans    &trans    &trans      &kp MINUS &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT  &kp DQT
+    &trans   &mo NVIM   &trans   &kp LPAR  &kp RPAR   &trans      &kp MINUS &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT  &kp DQT
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6       &trans   &kp RBKT  &kp RPAR  &kp RBRC  &kp TILDE &kp PIPE
+    &trans    &trans    &trans    &trans    &trans    &trans       &trans   &kp RBKT  &kp RPAR  &kp RBRC  &kp TILDE &kp PIPE
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-                                  &trans    &trans    &trans      &kp UNDER  &kp TAB   &trans
+                                  &trans    &trans    &trans      &kp UNDER  &trans    &trans
 //                              |---------|---------|---------|  |---------|---------|---------|
             >;
         };
@@ -174,7 +174,7 @@
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &kp SQT   &trans    &trans    &trans    &trans   &kp PLUS      &trans    &trans    &trans    &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-   &kp BSLH   &trans   &kp LBRC  &kp LPAR  &kp LBKT   &trans       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
+   &kp BSLH   &trans   &kp LBRC  &kp LPAR  &kp LBKT   &trans       &trans    &trans    &trans    &trans    &trans    &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
                                   &trans    &trans   &kp COLON     &trans    &trans    &trans
 //                              |---------|---------|---------|  |---------|---------|---------|
@@ -183,11 +183,11 @@
         number_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans       &trans    &kp N1    &kp N2    &kp N3   &kp RPAR  &kp LPAR
+    &trans  &tog QWERTY &trans    &trans    &trans    &trans       &trans    &kp N1    &kp N2    &kp N3   &kp RPAR  &kp LPAR
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans  &tog QWERTY &trans      &kp MINUS  &kp N4    &kp N5    &kp N6    &kp N0   &kp FSLH
+    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6      &kp MINUS  &kp N4    &kp N5    &kp N6    &kp N0   &kp FSLH
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans      &kp PLUS   &kp N7    &kp N8    &kp N9    &kp DOT  &kp STAR
+    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12    &kp PLUS   &kp N7    &kp N8    &kp N9    &kp DOT  &kp STAR
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
                                   &trans    &trans    &trans       &kp RET  &kp BSPC  &kp EQUAL
 //                              |---------|---------|---------|  |---------|---------|---------|
