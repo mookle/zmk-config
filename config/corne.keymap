@@ -131,9 +131,9 @@
         default_layer {
             bindings = <
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-     HT_NE     &kp Q     &kp W     &kp F     &kp P     &kp B        &kp J     &kp L     &kp U     &kp Y  &kp RA(N3) &kp EQUAL
+     HT_NE     &kp Q     &kp W     &kp F     &kp P     &kp B        &kp J     &kp L     &kp U     &kp Y   &kp SEMI  &kp EQUAL
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-     HT_AB     &kp A     &kp R     &kp S     &kp T     &kp G        &kp M     &kp N     &kp E     &kp I     &kp O   &kp SEMI
+     HT_AB     &kp A     &kp R     &kp S     &kp T     &kp G        &kp M     &kp N     &kp E     &kp I     &kp O    &kp SQT
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
    &kp LSHFT   &kp Z     &kp X     &kp C     &kp D     &kp V        &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
@@ -159,7 +159,7 @@
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &trans   &n_close   &n_save  &kp LBKT  &kp RBKT   &trans      &kp CARET &kp AMPS  &kp STAR  &kp LBRC  &kp RBRC   &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
-    &trans   &mo NVIM   &trans   &kp LPAR  &kp RPAR   &trans      &kp MINUS &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT  &kp DQT
+    &trans   &mo NVIM   &trans   &kp LPAR  &kp RPAR   &trans      &kp MINUS &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT  &trans
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
     &trans    &trans    &trans    &trans    &trans    &trans       &trans   &kp RBKT  &kp RPAR  &kp RBRC  &kp TILDE &kp PIPE
 //|---------|---------|---------|---------|---------|---------|  |---------|---------|---------|---------|---------|---------|
