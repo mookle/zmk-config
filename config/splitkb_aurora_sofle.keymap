@@ -19,22 +19,22 @@
         n_save: n_save {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp W>;
+            bindings = <&kp COLON>, <&kp W>, <&kp RET>;
         };
         n_close: n_close {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp Q>;
+            bindings = <&kp COLON>, <&kp Q>, <&kp RET>;
         };
         n_hsplit: n_hsplit {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp S>, <&kp P>;
+            bindings = <&kp COLON>, <&kp S>, <&kp P>, <&kp RET>;
         };
         n_vsplit: n_vsplit {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp V>, <&kp S>, <&kp P>;
+            bindings = <&kp COLON>, <&kp V>, <&kp S>, <&kp P>, <&kp RET>;
         };
     };
 };
