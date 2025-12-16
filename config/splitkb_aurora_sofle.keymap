@@ -36,6 +36,18 @@
             #binding-cells = <0>;
             bindings = <&kp COLON>, <&kp V>, <&kp S>, <&kp P>, <&kp RET>;
         };
+        td_lshft: tap_dance_lshft {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LSHFT>, <&kp CAPS>;
+        };
+        td_rshft: tap_dance_rshft {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp RSHFT>, <&kp CAPS>;
+        };
     };
 };
 
@@ -54,7 +66,7 @@
 //|---------|---------|---------|---------|---------|------------|                   |-----------|---------|---------|---------|---------|---------|
    &kp BSPC    &kp A     &kp R     &kp S     &kp T     &kp G                            &kp M       &kp N     &kp E     &kp I     &kp O    &kp RET
 //|---------|---------|---------|---------|---------|------------|---------+---------|-----------|---------|---------|---------|---------|---------|
-   &kp LSHFT   &kp Z     &kp X     &kp C     &kp D     &kp V     &kp C_MUTE   &none     &kp K       &kp H   &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+   &td_lshft   &kp Z     &kp X     &kp C     &kp D     &kp V     &kp C_MUTE   &none     &kp K       &kp H   &kp COMMA  &kp DOT  &kp FSLH  &td_rshft
 //+---------|---------|---------|---------|---------|------------|---------|---------|-----------|---------|---------|---------|---------|---------+
                        &kp LCTRL &kp LALT  &kp LGUI &lt LWR SPACE &kp UNDER &kp MINUS &lt RSE RET &kp RGUI  &kp RALT  &kp RCTRL
 //                    +---------|---------|---------|------------|---------+---------|-----------|---------|---------|---------+
