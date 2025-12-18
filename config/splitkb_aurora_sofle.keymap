@@ -10,9 +10,10 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 /* Layer definitions */
-#define QWERTY 1
-#define LWR  2
-#define RSE  3
+#define EXP 1
+#define QWERTY 2
+#define LWR  3
+#define RSE  4
 
 / {
     behaviors {
@@ -46,7 +47,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp CAPS>;
+            bindings = <&kp RSHFT>, <&kp CAPS>;
         };
     };
 };
@@ -59,20 +60,38 @@
             display-name = "COLEMAK Layer (default)";
             bindings = <
 
-//+---------|---------|---------|---------|---------|---------+                          +-----------|---------|---------|---------|---------|---------+
-    &gresc    &kp N1    &kp N2    &kp N3    &kp N4    &kp N5                                &kp N6      &kp N7    &kp N8    &kp N9    &kp N0   &kp EQUAL
-//|---------|---------|---------|---------|---------|---------|                          |-----------|---------|---------|---------|---------|---------|
-    &kp TAB    &kp Q     &kp W     &kp F     &kp P     &kp B                                 &kp J      &kp L     &kp U     &kp Y   &kp SEMI   &kp SQT
-//|---------|---------|---------|---------|---------|---------|                          |-----------|---------|---------|---------|---------|---------|
-   &kp BSPC    &kp A     &kp R     &kp S     &kp T     &kp G                                 &kp M      &kp N     &kp E     &kp I     &kp O    &kp RET
-//|---------|---------|---------|---------|---------|---------|------------+-------------|-----------|---------|---------|---------|---------|---------|
-   &td_lshft   &kp Z     &kp X     &kp C     &kp D     &kp V     &kp C_MUTE     &none        &kp K      &kp H   &kp COMMA  &kp DOT  &kp FSLH  &td_rshft
-//+---------|---------|---------|---------|---------|---------|------------|-------------|-----------|---------|---------|---------|---------|---------+
-                       &kp LALT  &kp LCTRL &kp LGUI  &kp SPACE &lt LWR UNDER &lt RSE MINUS &kp SPACE  &kp RCTRL &kp RALT    &none
-//                    +---------|---------|---------|---------|------------+-------------|-----------|---------|---------|---------+
+//+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
+    &gresc    &kp N1    &kp N2    &kp N3    &kp N4    &kp N5                        &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp EQUAL
+//|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
+    &kp TAB    &kp Q     &kp W     &kp F     &kp P     &kp B                         &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &kp SQT
+//|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
+   &kp BSPC    &kp A     &kp R     &kp S     &kp T     &kp G                         &kp M     &kp N     &kp E     &kp I     &kp O    &kp RET
+//|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
+   &td_lshft   &kp Z     &kp X     &kp C     &kp D     &kp V  &kp C_MUTE   &none     &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &td_rshft
+//+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
+                       &kp LALT  &kp LCTRL &kp LGUI  &mo LWR   &kp SPACE &kp SPACE  &mo RSE  &kp RCTRL &kp RALT    &none
+//                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+        };
+
+        experimental_layer {
+            display-name = "Experimental Layer";
+            bindings = <
+
+//+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
+    &trans    &trans    &trans    &trans    &trans    &trans                        &trans    &trans    &trans    &trans    &trans    &trans
+//|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
+    &trans    &trans    &trans    &trans    &trans    &trans                        &trans    &trans    &trans    &trans    &trans    &trans
+//|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
+    &trans    &trans    &trans    &trans    &trans    &trans                        &trans    &trans    &trans    &trans    &trans    &trans
+//|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
+    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+//+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
+                       &kp LCTRL &kp LGUI   &mo LWR  &kp SPACE &kp UNDER &kp MINUS &kp SPACE  &mo RSE  &kp RCTRL &kp RALT
+//                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
+            >;
         };
 
         qwerty_layer {
@@ -98,9 +117,9 @@
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
      &none     &none     &none   &kp NUHS    &none     &none                         &kp F7    &kp F8    &kp F9   &kp F10   &kp F11   &kp F12
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-     &none  &tog QWERTY  &none     &none     &none     &none                         &none     &none     &none     &none     &none     &none
+     &none  &tog QWERTY &tog EXP   &none     &none     &none                         &none     &none     &none     &none     &none     &none
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-    &kp DEL    &none     &none     &none     &none     &none                         &none   &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT   &none
+    &kp DEL    &none   &kp NUBS  &kp NUHS  &kp APOS    &none                         &none   &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT   &none
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
     &trans   &kp TILDE   &none     &none     &none   &bt BT_CLR  &none     &none   &kp CARET &kp AMPS  &kp STAR  &kp PIPE  &kp BSLH    &trans
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
