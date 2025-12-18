@@ -50,20 +50,20 @@
             bindings = <&kp RSHFT>, <&kp CAPS>;
         };
         bs_del: backspace_del {
-            compatible = "zmk,behaviour-mod-morph";
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp BACKSPACE>, <&kp DELETE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         c_quote: combined_quote {
-            compatible = "zmk,behaviour-mod-morph";
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp SINGLE_QUOTE>, <&kp N2>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         num_at: number_line_at {
-            compatible = "zmk,behaviour-mod-morph";
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp N2>, <&kp SINGLE_QUOTE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
