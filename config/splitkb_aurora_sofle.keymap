@@ -53,22 +53,21 @@
             compatible = "zmk,behaviour-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp BACKSPACE>, <&kp DELETE>;
-            mods = <(MOD_LSHFT|MOD_RSHFT)>;
-            keep-mods = 0;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         c_quote: combined_quote {
             compatible = "zmk,behaviour-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp SINGLE_QUOTE>, <&kp N2>;
-            mods = <(MOD_LSHFT|MOD_RSHFT)>;
-            keep-mods = <(MOD_LSHFT|MOD_RSHFT)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         num_at: number_line_at {
             compatible = "zmk,behaviour-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp N2>, <&kp SINGLE_QUOTE>;
-            mods = <(MOD_LSHFT|MOD_RSHFT)>;
-            keep-mods = <(MOD_LSHFT|MOD_RSHFT)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 };
