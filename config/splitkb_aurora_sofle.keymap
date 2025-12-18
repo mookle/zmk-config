@@ -49,6 +49,13 @@
             tapping-term-ms = <200>;
             bindings = <&kp RSHFT>, <&kp CAPS>;
         };
+        bs_del: backspace_del {
+            compatible = "zmk,behaviour-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSHFT|MOD_RSHFT)>;
+            keep-mods = 0;
+        };
     };
 };
 
@@ -65,7 +72,7 @@
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
     &kp TAB    &kp Q     &kp W     &kp F     &kp P     &kp B                         &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &kp SQT
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-   &kp BSPC    &kp A     &kp R     &kp S     &kp T     &kp G                         &kp M     &kp N     &kp E     &kp I     &kp O    &kp RET
+    &bs_del    &kp A     &kp R     &kp S     &kp T     &kp G                         &kp M     &kp N     &kp E     &kp I     &kp O    &kp RET
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
    &td_lshft   &kp Z     &kp X     &kp C     &kp D     &kp V  &kp C_MUTE   &none     &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &td_rshft
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
