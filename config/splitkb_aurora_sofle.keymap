@@ -56,6 +56,20 @@
             mods = <(MOD_LSHFT|MOD_RSHFT)>;
             keep-mods = 0;
         };
+        c_quote: combined_quote {
+            compatible = "zmk,behaviour-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SINGLE_QUOTE>, <&kp N2>;
+            mods = <(MOD_LSHFT|MOD_RSHFT)>;
+            keep-mods = <(MOD_LSHFT|MOD_RSHFT)>;
+        };
+        num_at: number_line_at {
+            compatible = "zmk,behaviour-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N2>, <&kp SINGLE_QUOTE>;
+            mods = <(MOD_LSHFT|MOD_RSHFT)>;
+            keep-mods = <(MOD_LSHFT|MOD_RSHFT)>;
+        };
     };
 };
 
@@ -68,9 +82,9 @@
             bindings = <
 
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
-    &gresc    &kp N1    &kp N2    &kp N3    &kp N4    &kp N5                        &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp EQUAL
+    &gresc    &kp N1    &num_at    &kp N3    &kp N4    &kp N5                        &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp EQUAL
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-    &kp TAB    &kp Q     &kp W     &kp F     &kp P     &kp B                         &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &kp SQT
+    &kp TAB    &kp Q     &kp W     &kp F     &kp P     &kp B                         &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &c_quote
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
     &bs_del    &kp A     &kp R     &kp S     &kp T     &kp G                         &kp M     &kp N     &kp E     &kp I     &kp O    &kp RET
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
@@ -122,13 +136,13 @@
             display-name = "Lower Layer";
             bindings = <
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
-     &none     &none     &none   &kp NUHS    &none     &none                         &kp F7    &kp F8    &kp F9   &kp F10   &kp F11   &kp F12
+     &none     &none     &none   &kp HASH    &none     &none                         &kp F7    &kp F8    &kp F9   &kp F10   &kp F11   &kp F12
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
      &none  &tog QWERTY &tog EXP   &none     &none     &none                         &none     &none     &none     &none     &none     &none
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
     &kp DEL    &none   &kp NUBS  &kp NUHS  &kp APOS    &none                         &none   &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT   &none
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
-    &trans   &kp TILDE   &none     &none     &none   &bt BT_CLR  &none     &none   &kp CARET &kp AMPS  &kp STAR  &kp PIPE  &kp BSLH    &trans
+    &trans   &kp TILDE   &none     &none     &none   &bt BT_CLR  &none     &none   &kp CARET &kp AMPS  &kp STAR  &kp PIPE  &kp NUBS    &trans
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
                          &trans   &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
@@ -145,7 +159,7 @@
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
    &kp LBRC  &kp LBKT  &kp LPAR  &kp RPAR  &kp RBKT  &kp RBRC                      &n_hsplit &kp LC(H) &kp LC(J) &kp LC(K) &kp LC(L)   &none
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
-    &trans   &kp EXCL   &kp AT   &kp HASH  &kp DLLR  &kp PRCNT   &none     &none     &none     &none     &none     &none     &none    &trans
+    &trans   &kp EXCL   &kp AT   &kp NUHS  &kp DLLR  &kp PRCNT   &none     &none     &none     &none     &none     &none     &none    &trans
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
                         &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
