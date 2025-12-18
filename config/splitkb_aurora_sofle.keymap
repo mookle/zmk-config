@@ -15,6 +15,19 @@
 #define LWR  3
 #define RSE  4
 
+#define XXX &none
+#define ___ &trans
+
+#define SPC_LWR &lt LWR SPACE
+#define SPC_RSE &lt RSE SPACE
+
+&lt {
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <150>;
+};
+
+
 / {
     behaviors {
         n_save: n_save {
@@ -55,7 +68,7 @@
             bindings = <&kp BACKSPACE>, <&kp DELETE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-        c_quote: combined_quote {
+        quotes: combined_quotes {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp SINGLE_QUOTE>, <&kp N2>;
@@ -81,13 +94,13 @@
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
     &gresc    &kp N1    &num_at   &kp N3    &kp N4    &kp N5                        &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp EQUAL
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-    &kp TAB    &kp Q     &kp W     &kp F     &kp P     &kp B                         &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &c_quote
+    &kp TAB    &kp Q     &kp W     &kp F     &kp P     &kp B                         &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &quotes
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
     &bs_del    &kp A     &kp R     &kp S     &kp T     &kp G                         &kp M     &kp N     &kp E     &kp I     &kp O    &kp RET
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
-   &td_lshft   &kp Z     &kp X     &kp C     &kp D     &kp V  &kp C_MUTE   &none     &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &td_rshft
+   &td_lshft   &kp Z     &kp X     &kp C     &kp D     &kp V  &kp C_MUTE    XXX      &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &td_rshft
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
-                       &kp LALT  &kp LCTRL &kp LGUI  &mo LWR   &kp SPACE &kp SPACE  &mo RSE  &kp RCTRL &kp RALT    &none
+                       &kp LALT  &kp LCTRL &kp LGUI   &mo LWR  &kp SPACE &kp SPACE  &mo RSE  &kp RCTRL &kp RALT     XXX
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
@@ -96,15 +109,15 @@
             display-name = "Experimental Layer";
             bindings = <
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
-    &trans    &trans    &trans    &trans    &trans    &trans                        &trans    &trans    &trans    &trans    &trans    &trans
+      ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans                        &trans    &trans    &trans    &trans    &trans    &trans
+      ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans                        &trans    &trans    &trans    &trans    &trans    &trans
+      ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
-    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+      ___       ___       ___       ___       ___       ___       ___       ___       ___       ___       ___       ___       ___       ___
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
-                       &kp LCTRL &kp LGUI   &mo LWR  &kp SPACE &kp UNDER &kp MINUS &kp SPACE  &mo RSE  &kp RCTRL &kp RALT
+                          ___       ___       ___     SPC_LWR  &kp UNDER &kp MINUS  SPC_RSE     ___       ___       ___
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
             >;
         };
@@ -112,15 +125,15 @@
             display-name = "QWERTY Layer";
             bindings = <
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
-    &trans    &trans    &trans    &trans    &trans    &trans                        &trans    &trans    &trans    &trans    &trans    &trans
+      ___       ___       ___       ___       ___       ___                           ___       ___       ___       ___       ___       ___
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-    &trans     &kp Q     &kp W     &kp E     &kp R     &kp T                         &kp Y     &kp U     &kp I     &kp O     &kp P    &trans
+      ___      &kp Q     &kp W     &kp E     &kp R     &kp T                         &kp Y     &kp U     &kp I     &kp O     &kp P     ___
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-    &trans     &kp A     &kp S     &kp D     &kp F     &kp G                         &kp H     &kp J     &kp K     &kp L   &kp SEMI   &trans
+      ___      &kp A     &kp S     &kp D     &kp F     &kp G                         &kp H     &kp J     &kp K     &kp L   &kp SEMI    ___
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
-    &trans     &kp Z     &kp X     &kp C     &kp V     &kp B    &trans    &trans     &kp N     &kp M   &kp COMMA  &kp DOT  &kp FSLH   &trans
+      ___      &kp Z     &kp X     &kp C     &kp V     &kp B      ___       ___      &kp N     &kp M   &kp COMMA  &kp DOT  &kp FSLH    ___
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
-                        &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans   &kp RALT
+                          ___       ___       ___       ___       ___       ___       ___       ___       ___    &kp RALT
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
             >;
         };
@@ -128,15 +141,15 @@
             display-name = "Lower Layer";
             bindings = <
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
-     &none     &none     &none   &kp HASH    &none     &none                         &kp F7    &kp F8    &kp F9   &kp F10   &kp F11   &kp F12
+      XXX       XXX       XXX    &kp HASH     XXX       XXX                          &kp F7    &kp F8    &kp F9   &kp F10   &kp F11   &kp F12
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-     &none  &tog QWERTY &tog EXP   &none     &none     &none                         &none     &none     &none     &none     &none     &none
+      XXX   &tog QWERTY &tog EXP    XXX       XXX       XXX                           XXX       XXX       XXX       XXX       XXX       XXX
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-    &kp DEL    &none   &kp NUBS  &kp NUHS  &kp APOS    &none                         &none   &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT   &none
+    &kp DEL     XXX    &kp NUBS  &kp NUHS  &kp APOS     XXX                           XXX    &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT    XXX
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
-    &trans   &kp TILDE   &none     &none     &none   &bt BT_CLR  &none     &none   &kp CARET &kp AMPS  &kp STAR  &kp PIPE  &kp NUBS    &trans
+      ___    &kp TILDE    XXX       XXX       XXX    &bt BT_CLR   XXX       XXX    &kp CARET &kp AMPS  &kp STAR  &kp PIPE  &kp NUBS     ___
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
-                         &trans   &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+                          ___       ___       ___       ___       ___       ___       ___       ___       ___       ___
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
             >;
         };
@@ -144,15 +157,15 @@
             display-name = "Raise Layer";
             bindings = <
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
-    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6                         &none     &none     &none     &none     &none     &none
+    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6                          XXX       XXX       XXX       XXX       XXX       XXX
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-     &none   &n_close   &n_save    &none     &none     &none                         &none     &none   &n_vsplit   &none     &none     &none
+      XXX    &n_close   &n_save     XXX       XXX       XXX                           XXX       XXX    &n_vsplit    XXX       XXX       XXX
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
-   &kp LBRC  &kp LBKT  &kp LPAR  &kp RPAR  &kp RBKT  &kp RBRC                      &n_hsplit &kp LC(H) &kp LC(J) &kp LC(K) &kp LC(L)   &none
+   &kp LBRC  &kp LBKT  &kp LPAR  &kp RPAR  &kp RBKT  &kp RBRC                      &n_hsplit &kp LC(H) &kp LC(J) &kp LC(K) &kp LC(L)    XXX
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
-    &trans   &kp EXCL   &kp AT   &kp NUHS  &kp DLLR  &kp PRCNT   &none     &none     &none     &none     &none     &none     &none    &trans
+      ___    &kp EXCL   &kp AT   &kp NUHS  &kp DLLR  &kp PRCNT    XXX       XXX       XXX       XXX       XXX       XXX       XXX       ___
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
-                        &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans
+                          ___       ___       ___       ___       ___       ___       ___       ___       ___       ___
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
             >;
         };
