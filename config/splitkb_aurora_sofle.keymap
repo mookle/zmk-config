@@ -82,6 +82,13 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
             keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+        num_hash: number_line_hash {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N3>, <&kp NUHS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 };
 
@@ -92,7 +99,7 @@
             display-name = "COLEMAK Layer (default)";
             bindings = <
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
-    &gresc    &kp N1    &num_at   &kp N3    &kp N4    &kp N5                        &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp EQUAL
+    &gresc    &kp N1    &num_at  &num_hash  &kp N4    &kp N5                        &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp EQUAL
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
     &kp TAB    &kp Q     &kp W     &kp F     &kp P     &kp B                         &kp J     &kp L     &kp U     &kp Y   &kp SEMI   &quotes
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
