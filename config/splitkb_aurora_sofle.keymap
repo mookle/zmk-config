@@ -107,7 +107,7 @@
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
    &td_lshft   &kp Z     &kp X     &kp C     &kp D     &kp V  &kp C_MUTE    XXX      &kp K     &kp H   &kp COMMA  &kp DOT  &kp FSLH  &td_rshft
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
-                       &kp LALT  &kp LCTRL &kp LGUI   &mo LWR  &kp SPACE &kp SPACE  &mo RSE  &kp RCTRL &kp RALT     XXX
+                       &kp LALT  &kp LCTRL &kp LGUI   &mo LWR  &kp SPACE &kp SPACE  &mo RSE  &kp RGUI  &kp RCTRL &kp RALT
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
