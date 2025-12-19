@@ -23,11 +23,10 @@
 
 &lt {
     flavor = "balanced";
-    tapping-term-ms = <175>;
-    quick-tap-ms = <175>;
-    require-prior-idle-ms = <150>;
+    tapping-term-ms = <125>; /* time until a pressed key is considered a hold */
+    quick-tap-ms = <175>; /* repeats within this time will always yield a tap */
+    require-prior-idle-ms = <110>; /* always yield a tap if the last keypress was under this time */
 };
-
 
 / {
     behaviors {
