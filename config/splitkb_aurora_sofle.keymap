@@ -9,7 +9,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/outputs.h>
 
 /* Layer definitions */
 #define EXP 1
@@ -47,6 +46,13 @@
 #define ZOOM_OUT &kp LC(MINUS)
 #define ROTATE &kp LCTRL
 #define PAN &mkp MCLK
+
+/* Bluetooth profile selectors */
+#define BT_1 &bt BT_SEL 0
+#define BT_2 &bt BT_SEL 1
+#define BT_3 &bt BT_SEL 2
+#define BT_4 &bt BT_SEL 3
+#define BT_5 &bt BT_SEL 4
 
 / {
     behaviors {
@@ -196,7 +202,7 @@
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
     &kp DEL     XXX    &kp NUBS  &kp NUHS  &kp APOS     XXX                           XXX    &kp LEFT  &kp DOWN   &kp UP   &kp RIGHT    XXX
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
-      ___    &kp TILDE    XXX       XXX       XXX    &bt BT_CLR   XXX       XXX    &kp CARET &kp AMPS  &kp STAR  &kp PIPE  &kp NUBS     ___
+      ___    &kp TILDE    XXX       XXX       XXX       XXX       XXX       XXX    &kp CARET &kp AMPS  &kp STAR  &kp PIPE  &kp NUBS     ___
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
                           ___       ___       ___       ___       ___       ___       ___       ___       ___       ___
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
@@ -207,7 +213,7 @@
             display-name = "Raise Layer";
             bindings = <
 //+---------|---------|---------|---------|---------|---------+                   +---------|---------|---------|---------|---------|---------+
-    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6                      &out OUT_USB &out OUT_BLE XXX      XXX       XXX       XXX
+    &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6                         BT_1      BT_2      BT_3      BT_4      BT_5   &bt BT_CLR
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
       XXX    &n_close   &n_save     XXX       XXX       XXX                           XXX       XXX    &n_vsplit    XXX       XXX       XXX
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
