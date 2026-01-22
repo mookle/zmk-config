@@ -13,7 +13,16 @@
         events = <0>;
     };
 
-    // Taken from zmkfirmware@zmk:app/boards/shields/splitkb_aurora_sofle/splitkb_aurora_sofle.dtsi
+    physical_layout0: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+        transform = <&default_transform>;
+    };
+
+    //
+    // Everything from here to EOF has been taken/adapted from the original Aurora Sofle dtsi:
+    // zmkfirmware@zmk:app/boards/shields/splitkb_aurora_sofle/splitkb_aurora_sofle.dtsi
+    //
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <14>;
@@ -32,9 +41,27 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(4,5) RC(4,6) RC(3,6) RC(3,7) 
         >;
     };
 
-    physical_layout0: physical_layout_0 {
-        compatible = "zmk,physical-layout";
-        display-name = "Default Layout";
-        transform = <&default_transform>;
+    left_encoder: left_encoder {
+        compatible = "alps,ec11";
+        steps = <144>;
+        status = "disabled";
+
+        a-gpios = <&gpio0 16 GPIO_PULL_UP>;
+        b-gpios = <&gpio0 10 GPIO_PULL_UP>;
+    };
+
+    right_encoder: right_encoder {
+        compatible = "alps,ec11";
+        steps = <144>;
+        status = "disabled";
+
+        a-gpios = <&gpio0 16 GPIO_PULL_UP>;
+        b-gpios = <&gpio0 10 GPIO_PULL_UP>;
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder &right_encoder>;
+        triggers-per-rotation = <36>;
     };
 };
