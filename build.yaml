@@ -19,13 +19,13 @@
 #
 ---
 include:
-  - board: nice_nano@2.0.0
+  - board: nice_nano
     shield: splitkb_aurora_sofle_left
-  - board: nice_nano@2.0.0
+  - board: nice_nano
     shield: splitkb_aurora_sofle_right
   - board: seeeduino_xiao_ble
     shield: splitkb_aurora_sofle_dongle
-  - board: nice_nano@2.0.0
+  - board: nice_nano
     shield: settings_reset
   - board: seeeduino_xiao_ble
     shield: settings_reset
