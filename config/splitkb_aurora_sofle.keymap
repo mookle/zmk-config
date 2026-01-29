@@ -113,7 +113,6 @@
             #binding-cells = <0>;
             bindings = <&kp N3>, <&kp NUHS>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 };
