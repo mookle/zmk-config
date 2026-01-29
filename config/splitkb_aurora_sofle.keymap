@@ -40,8 +40,8 @@
 #define OPAC_UP &kp O
 #define OPAC_DWN &kp I
 #define MIRROR &kp M
-#define UNDO &kp K_UNDO
-#define REDO &kp K_REDO
+#define KR_UNDO &kp LC(Z)
+#define KR_REDO &kp LC(LS(Z))
 #define ZOOM_IN &kp LC(PLUS)
 #define ZOOM_OUT &kp LC(MINUS)
 #define ROTATE &kp LCTRL
@@ -183,7 +183,7 @@
 //|---------|---------|---------|---------|---------|---------|                   |---------|---------|---------|---------|---------|---------|
       ___     MIRROR     LASSO   DESELECT   ZOOM_IN  ZOOM_OUT                         XXX       XXX       XXX       XXX       XXX       XXX
 //|---------|---------|---------|---------|---------|---------|---------+---------|---------|---------|---------|---------|---------|---------|
-      ___   &kp K_UNDO &kp K_REDO PICKER    ROTATE      PAN       ___       XXX       XXX       XXX       XXX       XXX       XXX       XXX
+      ___     KR_UNDO   KR_REDO   PICKER    ROTATE      PAN       ___       XXX       XXX       XXX       XXX       XXX       XXX       XXX
 //+---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------+
                           ___       ___       ___       ___       ___       XXX       XXX       XXX       XXX       XXX
 //                    +---------|---------|---------|---------|---------+---------|---------|---------|---------|---------+
