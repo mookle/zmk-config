@@ -4,6 +4,7 @@
     chosen {
         zmk,kscan = &mock_kscan;
         zmk,physical-layout = &physical_layout0;
+        zmk,battery-proxy = &battery_proxy;
     };
 
     mock_kscan: mock_kscan_0 {
@@ -11,6 +12,13 @@
         columns = <0>;
         rows = <0>;
         events = <0>;
+    };
+
+    battery_proxy: battery_proxy {
+        compatible = "zmk,battery-proxy";
+        dongle { hidden; };
+        left   { display-name = "Left"; };
+        right  { display-name = "Right"; };
     };
 
     physical_layout0: physical_layout_0 {
