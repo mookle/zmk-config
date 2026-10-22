@@ -4,11 +4,14 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    # Additional modules containing boards/shields/custom code can be listed here as well
-    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
+    # required until split half/dongle battery reporting is merged into zmkfirmware
+    - name: zampierilucas
+      url-base: https://github.com/zampierilucas
   projects:
     - name: zmk
-      remote: zmkfirmware
+      remote: zampierilucas
+      # pinned to a bug fix on feat branch
+      revision: 77d28e60bc5a6c29add881b2bede10c04a2feb53
       import: app/west.yml
   self:
     path: config
